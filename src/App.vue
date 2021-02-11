@@ -1,7 +1,7 @@
 <template>
   <div id="app" :style="{backgroundColor}">
     <input type="text" v-model="text" @keydown.enter="backgroundColor = text">
-    <suggestion-list :match="text" @click="color => backgroundColor = color" />
+    <suggestion-list :match="text" @click= "color=>backgroundColor=color" />
   </div>
 </template>
 
@@ -15,10 +15,11 @@ export default {
     text: "",
     backgroundColor: ""
   }},
+  
 }
 </script>
 
-<style lang="scss">
+<style scope>
 body, html, #app{ margin: 0; height: 100%;}
 #app {
 

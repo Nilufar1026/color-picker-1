@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li 
-      v-for="color in colors" 
+      v-for="color in matchingColors" 
       :key="color"
       @click="$emit('click', color)"
     >{{color}}</li>
@@ -11,14 +11,23 @@
 <script>
 export default {
   props: ['match'],
-  data(){ return {
-    colors: ['red','green','blue'] // Change this to a vuex getter that filters based on this.match
-  }},
+  computed:{
+    
+    color(){return this.$store.state.colors},
+    matchingColors(){
+      return this.$store.getters.matchingColors(this.match)
+    }
+  
+  },
+  // data(){ return {
+  //   colors: ['red','green','blue'] // Change this to a vuex getter that filters based on this.match
+  // }},
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 ul{
   position: absolute;
 }
-</style>
+</style>>
+
